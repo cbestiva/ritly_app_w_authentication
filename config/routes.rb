@@ -20,6 +20,8 @@ RitlyApp::Application.routes.draw do
   # URL page using the random string code
   get "/go/:random_string", to: "urls#go_to_link"
 
-  
+  get "/go/:random_string/preview", to: "urls#preview"
+
+  delete "/go/all_links", to: "urls#destroy"
 
 end

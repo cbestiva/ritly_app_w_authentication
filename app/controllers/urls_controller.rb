@@ -33,4 +33,18 @@ class UrlsController < ApplicationController
 		@url = Url.all
 	end
 
+	def preview
+		code = params[:random_string]
+		@url = Url.find_by_random_string(code)
+	end	
+
+	def destroy
+		code = params[:random_string]
+		url = Url.find_by_random_string(code)
+
+		url.delete(code)
+
+		redirect_to all_urls_path
+	end
+
 end
