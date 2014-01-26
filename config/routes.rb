@@ -9,13 +9,17 @@ RitlyApp::Application.routes.draw do
   # create a url
   post "/urls", to: "urls#create"
 
-  # rout that displays the show erb
+  # route that displays the show erb
   # after the url has been created
-  get "/urls/:id", to: "urls#show", as: :url 
+  get "/urls/:id", to: "urls#show", as: :url
+
+  # route that shows table of all links
+  get "/go/all_links", to: "urls#display_links", as: :all_urls
 
   # route that displays the
   # URL page using the random string code
-  get "/go/:random_string", to: "urls#go_to_link", as: :url_link
+  get "/go/:random_string", to: "urls#go_to_link"
 
+  
 
 end
