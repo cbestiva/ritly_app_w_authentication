@@ -1,0 +1,26 @@
+<h2>List of All Redirect Links</h2>
+
+<div class="container">
+	<div class="table-responsive">
+		<table class="table table-bordered table-condensed">
+			<tr>
+				<th>Redirect</th>
+				<th>Number of Times Redirect Used</th>
+				<th>Preview</th>
+			</tr>
+			<% @url.each do |url| %>
+			<tr>
+				<td>localhost:3000/go/<%= url.random_string %></td>
+				<td><%= url.views %></td>
+				<td><a href="/go/<%= url.random_string %>/preview">click to view URL</a></td>
+				<td>
+					<%= button_to "Delete Link", { action: :destroy, id: url["id"]}, method: :delete  %>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+
+
+<%#= button_to "Delete Link", { action: :destroy, id: url["random_string"]}, method: :delete  %>
