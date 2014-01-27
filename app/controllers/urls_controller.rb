@@ -40,11 +40,9 @@ class UrlsController < ApplicationController
 	end	
 
 	def destroy
-		code = params[:random_string]
-		url = Url.find_by_random_string(code)
-
-		url.delete(code)
-
+		id = params[:id]
+		url = Url.find(id).destroy
+		
 		redirect_to all_urls_path
 	end
 

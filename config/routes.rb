@@ -24,6 +24,6 @@ RitlyApp::Application.routes.draw do
   # URL the redirect will lead to
   get "/go/:random_string/preview", to: "urls#preview"
 
-  delete "/go/all_links", to: "urls#destroy"
+  delete "/go/all_links", to: "urls#destroy", as: :url_delete
 
 end
