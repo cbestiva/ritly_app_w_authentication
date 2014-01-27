@@ -1,6 +1,7 @@
 class UrlsController < ApplicationController
 
 	def index
+		# set an instance url as a new model
 		@url = Url.new
 	end
 
@@ -20,12 +21,12 @@ class UrlsController < ApplicationController
 	def go_to_link
 		code = params[:random_string]
 		url = Url.find_by_random_string(code)
-		url.count
 		if url.link.include?("https://")
 			redirect_to url.link
 		else
 		redirect_to "https://#{url.link}"
 		end
+		url.count
 	end
 
 	def display_links
