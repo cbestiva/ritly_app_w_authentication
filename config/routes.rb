@@ -1,5 +1,12 @@
 RitlyApp::Application.routes.draw do
 
+  resources :users, :sessions
+  
+  # get "sessions/new"
+  # get "sessions/destroy"
+  # get "users/new"
+  # get "users/show"
+  # get "users/create"
   root to: "urls#index"
 
   # default route that displays the index erb
@@ -25,5 +32,9 @@ RitlyApp::Application.routes.draw do
   get "/go/:random_string/preview", to: "urls#preview"
 
   delete "/go/all_links", to: "urls#destroy", as: :url_delete
+
+  get "/signup" => "users#new"
+  delete "/signout", to: "sessions#destroy"
+  get "/signin" => "sessions#new"
 
 end

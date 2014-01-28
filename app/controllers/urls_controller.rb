@@ -1,5 +1,7 @@
 class UrlsController < ApplicationController
 
+	before_filter :signed_in_user, only: [:create, :new, :edit, :update]
+
 	def index
 		# set an instance url as a new model
 		@url = Url.new
@@ -10,6 +12,7 @@ class UrlsController < ApplicationController
 		@url = Url.create(safe_url)
 		@url.random_string = SecureRandom.urlsafe_base64(7)
 		@url.save
+		binding.pry
 		redirect_to @url
 	end
 
