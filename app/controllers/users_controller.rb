@@ -10,9 +10,9 @@ class UsersController < ApplicationController
   def create
     # Use code below if gem 'protected_attributes' (which is for rails 3) is not installed and
     # remove the attr_accessors in the user model 
-    # user = params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    user = params.require(:user).permit(:name, :email, :password, :password_confirmation)
 
-  	@user = User.new(params[:user]) # <-- use this, if gem 'protected_attributes' is installed
+  	@user = User.new(user)
   	if @user.save
   		flash[:success] = "Welcome to Ritly!"
   		sign_in @user

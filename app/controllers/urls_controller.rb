@@ -8,11 +8,12 @@ class UrlsController < ApplicationController
 	end
 
 	def create
+		# raise params.inspect
 		safe_url = params.require(:url).permit(:link)
 		@url = Url.create(safe_url)
 		@url.random_string = SecureRandom.urlsafe_base64(7)
 		@url.save
-		binding.pry
+		# binding.pry
 		redirect_to @url
 	end
 
